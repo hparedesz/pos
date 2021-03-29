@@ -3,19 +3,28 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\CategoriaModel;
+use App\Models\MarcaModel;
+use App\Models\PresentacionModel;
 use App\Models\ProductoModel;
 
 class Producto extends BaseController
 {
 	protected $productos;
+    protected $marcas;
+    protected $presentaciones;
+    protected $categorias;
+
 	public function __construct()
 	{
 		$this->productos = new ProductoModel();
+        $this->marcas = new MarcaModel();
+        $this->presentaciones = new PresentacionModel();
+        $this->categorias = new CategoriaModel();
 	}
 
 	public function index($estado = 1)
 	{
-
 		$db = db_connect();
         $builder = $db->table('producto p');
         $builder->select([
@@ -44,9 +53,12 @@ class Producto extends BaseController
         echo view('producto/script/script');
 	}
 
-	public function nuevo()
+	public function nuevo($estado = 1)
 	{
-        $datos = ['titulo' => 'Agregar Producto'];
+        $marcas = $this->marcas->where('estado', $estado)->findAll();
+        $presentaciones = $this->presentaciones->where('estado', $estado)->findAll();
+        $categorias = $this->categorias->where('estado', $estado)->findAll();
+        $datos = ['titulo' => 'Agregar Producto','marcas'=>$marcas,'presentaciones'=>$presentaciones,'categorias'=>$categorias];
 		echo view('layout/header');
 		echo view('layout/menu');
 		echo view('producto/nuevo',$datos);

@@ -51,10 +51,15 @@ class Presentacion extends BaseController
         }
     }
 
-    public function editar($id)
+    public function editar($id,$validation = null)
     {
+
         $presentaciones = $this->presentaciones->where('id', $id)->first();
-        $datos = ['titulo' => 'Editar Presentación','presentacion'=>$presentaciones];
+        if($validation != null) {
+            $datos = ['titulo' => 'Editar Presentación', 'presentacion' => $presentaciones,'validation'=>$validation];
+        }else{
+            $datos = ['titulo' => 'Editar Presentación', 'presentacion' => $presentaciones];
+        }
         echo view('layout/header');
         echo view('layout/menu');
         echo view('presentacion/editar',$datos);
@@ -68,8 +73,9 @@ class Presentacion extends BaseController
                 ['nombre'=>$this->request->getPost('nombre'),
                 'abreviatura'=>$this->request->getPost('abreviatura')]);
             return redirect()->to(base_url().'/presentacion');
+        }else{
+            return $this->editar($this->request->getPost('id'),$this->validator);
         }
-        $this->index();
     }
 
     public function eliminar($id){

@@ -24,5 +24,35 @@
                 <li><a href="<?php echo base_url();?>/marca"><span class="lbl">Lista de Marcas</span></a></li>
             </ul>
         </li>
+        <li class="grey with-sub">
+            <span>
+                <i class="font-icon glyphicon glyphicon-user"></i>
+                <span class="lbl">Repartidores</span>
+            </span>
+            <ul>
+                <li><a href="<?php echo base_url();?>/cliente"><span class="lbl">Lista de Repartidores</span></a></li>
+            </ul>
+        </li>
+        <li class="red with-sub">
+            <span>
+                <i class="font-icon glyphicon glyphicon-user"></i>
+                <span class="lbl">Clientes</span>
+            </span>
+            <ul>
+                <li><a href="<?php echo base_url();?>/cliente"><span class="lbl">Lista de Clientes</span></a></li>
+            </ul>
+        </li>
+        <li class="blue-darker with-sub">
+            <span>
+                <i class="font-icon glyphicon glyphicon-cog"></i>
+                <span class="lbl">Administración</span>
+            </span>
+            <ul>
+                <li><a href="<?php echo base_url();?>/configuracion"><span class="lbl">Configuración</span></a></li>
+                <li><a href="<?php echo base_url();?>/usuario"><span class="lbl">Usuarios</span></a></li>
+                <li><a href="<?php echo base_url();?>/rol"><span class="lbl">Roles</span></a></li>
+                <li><a href="<?php echo base_url();?>/caja"><span class="lbl">Cajas</span></a></li>
+            </ul>
+        </li>
     </ul>
 </nav>

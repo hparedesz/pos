@@ -5,7 +5,7 @@
             let url = $(this).data('href');
             swal({
                     title: "¿Estás seguro?",
-                    text: "Avtivar este registro!",
+                    text: "Activar este registro!",
                     type: "warning",
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",

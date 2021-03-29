@@ -16,7 +16,6 @@ class Marca extends BaseController
 
 	public function index($estado = 1)
 	{
-
 		$marcas = $this->marcas->where('estado', $estado)->findAll();
 		$datos = ['titulo' => 'Marcas', "marcas" => $marcas];
 		echo view('layout/header');
@@ -51,10 +50,14 @@ class Marca extends BaseController
         }
     }
 
-    public function editar($id)
+    public function editar($id,$validation = null)
     {
         $marca = $this->marcas->where('id', $id)->first();
-        $datos = ['titulo' => 'Editar Marca','marca'=>$marca];
+        if($validation != null) {
+            $datos = ['titulo' => 'Editar Marca', 'marca' => $marca,'validation'=>$validation];
+        }else{
+            $datos = ['titulo' => 'Editar Marca', 'marca' => $marca];
+        }
         echo view('layout/header');
         echo view('layout/menu');
         echo view('marca/editar',$datos);
@@ -63,12 +66,13 @@ class Marca extends BaseController
     }
 
     public function actualizar(){
-        if($this->validate('insertarMarca')) {
+        if($this->validate('actualizarMarca')) {
             $this->marcas->update($this->request->getPost('id'),
                 ['nombre' => $this->request->getPost('nombre')]);
             return redirect()->to(base_url() . '/marca');
+        }else{
+            return $this->editar($this->request->getPost('id'),$this->validator);
         }
-        $this->index();
     }
 
     public function eliminar($id){

@@ -1,5 +1,7 @@
 <script>
     $(document).ready(function(){
+        $('#telefono').mask('0000-0000', {placeholder: "____-____"});
+        $('#nit').mask('0000000-0', {placeholder: "_______-_"});
         $('.btn-activar').click(function(e) {
             e.preventDefault();
             let url = $(this).data('href');

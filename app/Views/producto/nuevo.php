@@ -40,6 +40,42 @@
                                     <input type="text" class="form-control" id="precio_venta" name="precio_venta" required>
                                 </div>
                             </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="stock_min">Stock Min</label>
+                                    <input type="text" class="form-control" id="stock_min" name="stock_min" required>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="categoria">Categoria</label>
+                                    <select name="categoria" id="categoria" class="form-control" required>
+                                        <?php foreach ($categorias as $categoria):?>
+                                            <option value="<?php echo $categoria['id']?>"><?php echo $categoria['nombre']?></option>
+                                        <?php endforeach;?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="marca">Marca</label>
+                                    <select name="marca" id="marca" class="form-control" required>
+                                        <?php foreach ($marcas as $marca):?>
+                                            <option value="<?php echo $marca['id']?>"><?php echo $marca['nombre']?></option>
+                                        <?php endforeach;?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="presentacion">Presentación</label>
+                                    <select name="presentacion" id="presentacion" class="form-control" required>
+                                        <?php foreach ($presentaciones as $presentacion):?>
+                                            <option value="<?php echo $presentacion['id']?>"><?php echo $presentacion['nombre']?></option>
+                                        <?php endforeach;?>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <a class="btn btn-warning" href="<?php echo base_url();?>/producto"><i class="glyphicon glyphicon-arrow-left"></i> Regresar</a>
